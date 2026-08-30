@@ -48,6 +48,7 @@ export const content = {
       cardLabel: "DR. AMMAR JUNIED",
       cardTitle: "ORTHODONTIST",
       cardNote: "دقة في التشخيص. وضوح في الخطة. اهتمام في المتابعة.",
+      photoAlt: "زائرة سعودية في أجواء عيادة تقويم أسنان حديثة",
       trust: [
         "أخصائي تقويم الأسنان وتجميل الفكين",
         "خبرة تمتد لأكثر من 10 سنوات",
@@ -81,6 +82,29 @@ export const content = {
           text: "مراجعات دورية لقياس التقدم، شرح المرحلة الحالية، وتحديث الخطة عند الحاجة.",
         },
       ],
+    },
+    care: {
+      eyebrow: "رعاية لكل مرحلة",
+      title: "ابتسامات مختلفة. اهتمام واحد.",
+      description:
+        "تختلف احتياجات التقويم باختلاف العمر ونمو الأسنان والأهداف الشخصية؛ ويبدأ المسار المناسب دائمًا بتقييم الحالة كما هي.",
+      items: [
+        {
+          number: "01",
+          image: "/images/patients/saudi-child-orthodontics.jpg",
+          alt: "أم سعودية مع ابنها في عيادة تقويم أسنان",
+          title: "بداية مطمئنة للصغار واليافعين",
+          text: "زيارة هادئة تشرح الحالة والخطوات بلغة واضحة للمريض وعائلته.",
+        },
+        {
+          number: "02",
+          image: "/images/patients/saudi-man-orthodontics.jpg",
+          alt: "رجل سعودي في أجواء عيادة تقويم حديثة",
+          title: "تقويم ينسجم مع حياة البالغين",
+          text: "تقييم الأهداف والخيارات والمتابعة بما يناسب احتياجات كل حالة وروتينها.",
+        },
+      ],
+      disclaimer: "الصور تعبيرية مولّدة للهوية، ولا تمثل مرضى أو نتائج علاجية فعلية.",
     },
     about: {
       eyebrow: "عن الطبيب",
@@ -201,6 +225,7 @@ export const content = {
       cardLabel: "DR. AMMAR JUNIED",
       cardTitle: "ORTHODONTIST",
       cardNote: "Precise assessment. A clear plan. Attentive follow-up.",
+      photoAlt: "Saudi visitor in a contemporary orthodontic clinic setting",
       trust: [
         "Orthodontics & dentofacial aesthetics specialist",
         "More than 10 years of published experience",
@@ -234,6 +259,29 @@ export const content = {
           text: "Scheduled reviews to measure progress, explain the current stage, and adjust when needed.",
         },
       ],
+    },
+    care: {
+      eyebrow: "Care at every stage",
+      title: "Different smiles. The same attention.",
+      description:
+        "Orthodontic needs vary with age, dental development, and personal goals. The right path always starts with an assessment of your individual case.",
+      items: [
+        {
+          number: "01",
+          image: "/images/patients/saudi-child-orthodontics.jpg",
+          alt: "Saudi mother with her son in an orthodontic clinic",
+          title: "A reassuring start for young smiles",
+          text: "A calm visit that explains the case and next steps clearly to the patient and family.",
+        },
+        {
+          number: "02",
+          image: "/images/patients/saudi-man-orthodontics.jpg",
+          alt: "Saudi man in a contemporary orthodontic clinic setting",
+          title: "Orthodontics that fits adult life",
+          text: "Goals, options, and follow-up are considered around the needs and routine of each case.",
+        },
+      ],
+      disclaimer: "Images are AI-generated brand visuals and do not depict actual patients or treatment outcomes.",
     },
     about: {
       eyebrow: "About the doctor",

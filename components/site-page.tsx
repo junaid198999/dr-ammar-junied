@@ -107,11 +107,22 @@ export function SitePage({ locale }: { locale: Locale }) {
             <div className="hero-visual">
               <div className="orbit orbit-one" />
               <div className="orbit orbit-two" />
-              <div className="monogram-card">
-                <Image src="/brand/mark.svg" alt="AJ" width={460} height={460} priority />
-                <div className="monogram-caption">
-                  <span>{copy.hero.cardLabel}</span>
-                  <strong>{copy.hero.cardTitle}</strong>
+              <div className="hero-photo-card">
+                <Image
+                  src="/images/patients/saudi-woman-orthodontics.jpg"
+                  alt={copy.hero.photoAlt}
+                  fill
+                  priority
+                  sizes="(max-width: 620px) 330px, (max-width: 860px) 430px, 470px"
+                />
+                <div className="hero-photo-signature">
+                  <span className="signature-mark">
+                    <Image src="/brand/mark.svg" alt="" width={58} height={58} />
+                  </span>
+                  <div>
+                    <span>{copy.hero.cardLabel}</span>
+                    <strong>{copy.hero.cardTitle}</strong>
+                  </div>
                 </div>
               </div>
               <p className="visual-note">{copy.hero.cardNote}</p>
@@ -140,6 +151,37 @@ export function SitePage({ locale }: { locale: Locale }) {
                 </article>
               ))}
             </div>
+          </div>
+        </section>
+
+        <section className="section people" id="care">
+          <div className="container">
+            <div className="section-heading split-heading">
+              <div>
+                <p className="eyebrow"><span />{copy.care.eyebrow}</p>
+                <h2>{copy.care.title}</h2>
+              </div>
+              <p>{copy.care.description}</p>
+            </div>
+
+            <div className="people-grid">
+              {copy.care.items.map((item) => (
+                <article className="people-card" key={item.number}>
+                  <Image
+                    src={item.image}
+                    alt={item.alt}
+                    fill
+                    sizes="(max-width: 860px) 100vw, 50vw"
+                  />
+                  <div className="people-card-copy">
+                    <span>{item.number}</span>
+                    <h3>{item.title}</h3>
+                    <p>{item.text}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+            <p className="people-disclaimer">{copy.care.disclaimer}</p>
           </div>
         </section>
 

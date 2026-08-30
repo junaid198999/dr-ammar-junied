@@ -386,46 +386,80 @@ blockquote {
   place-items: center;
 }
 
-.monogram-card {
+.hero-photo-card {
   position: relative;
   z-index: 2;
   width: min(100%, 470px);
-  aspect-ratio: 0.88;
-  padding: 54px 44px 36px;
+  aspect-ratio: 0.82;
   border: 1px solid rgba(255, 255, 255, 0.9);
   border-radius: 240px 240px 32px 32px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255, 253, 248, 0.7);
+  overflow: hidden;
+  background: var(--paper);
   box-shadow: var(--shadow);
-  backdrop-filter: blur(18px);
 }
 
-.monogram-card img {
-  width: min(100%, 360px);
-  height: auto;
+.hero-photo-card > img {
+  object-fit: cover;
+  object-position: center 28%;
 }
 
-.monogram-caption {
-  margin-top: 4px;
+.hero-photo-card::after {
+  content: "";
+  position: absolute;
+  inset: 42% 0 0;
+  z-index: 1;
+  background: linear-gradient(to bottom, transparent, rgba(16, 34, 47, 0.42));
+}
+
+.hero-photo-signature {
+  position: absolute;
+  inset-inline: 22px;
+  bottom: 22px;
+  z-index: 2;
+  padding: 12px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  background: rgba(16, 34, 47, 0.86);
+  color: white;
+  box-shadow: 0 14px 34px rgba(16, 34, 47, 0.2);
+  backdrop-filter: blur(14px);
+}
+
+.signature-mark {
+  width: 58px;
+  height: 58px;
+  padding: 8px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  background: var(--ivory);
+}
+
+.signature-mark img {
+  width: 100%;
+  height: 100%;
+}
+
+.hero-photo-signature > div {
+  direction: ltr;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 3px;
-  direction: ltr;
+  gap: 4px;
   font-family: var(--font-sans), sans-serif;
   letter-spacing: 0.16em;
 }
 
-.monogram-caption span {
+.hero-photo-signature > div span {
   font-size: 0.78rem;
   font-weight: 800;
 }
 
-.monogram-caption strong {
-  color: var(--gold-text);
+.hero-photo-signature > div strong {
+  color: var(--gold-light);
   font-size: 0.62rem;
   letter-spacing: 0.28em;
 }
@@ -593,6 +627,90 @@ blockquote {
   width: 46px;
   height: 2px;
   background: var(--gold);
+}
+
+.people {
+  position: relative;
+  padding-top: 28px;
+  background: var(--paper);
+}
+
+.people-grid {
+  margin-top: 64px;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 24px;
+}
+
+.people-card {
+  position: relative;
+  min-height: 520px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--ink);
+  box-shadow: 0 20px 55px rgba(16, 34, 47, 0.1);
+}
+
+.people-card > img {
+  object-fit: cover;
+  transition: transform 0.7s ease;
+}
+
+.people-card:first-child > img {
+  object-position: center center;
+}
+
+.people-card:last-child > img {
+  object-position: 53% center;
+}
+
+.people-card::after {
+  content: "";
+  position: absolute;
+  inset: 36% 0 0;
+  background: linear-gradient(to bottom, transparent, rgba(8, 24, 34, 0.92));
+}
+
+.people-card:hover > img {
+  transform: scale(1.035);
+}
+
+.people-card-copy {
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 2;
+  padding: 38px;
+  color: white;
+}
+
+.people-card-copy > span {
+  color: var(--gold-light);
+  font-family: var(--font-sans), sans-serif;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+.people-card-copy h3 {
+  max-width: 520px;
+  margin: 12px 0 10px;
+  font-size: clamp(1.45rem, 2.4vw, 2.25rem);
+  line-height: 1.35;
+}
+
+.people-card-copy p {
+  max-width: 520px;
+  margin: 0;
+  color: #d7e0e3;
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+.people-disclaimer {
+  margin: 16px 4px 0;
+  color: #79868c;
+  font-size: 0.72rem;
+  line-height: 1.7;
 }
 
 .about {
@@ -1266,7 +1384,7 @@ blockquote {
     min-height: 520px;
   }
 
-  .monogram-card {
+  .hero-photo-card {
     width: 430px;
     max-width: 92%;
   }
@@ -1293,6 +1411,14 @@ blockquote {
   .split-heading {
     grid-template-columns: 1fr;
     gap: 24px;
+  }
+
+  .people-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .people-card {
+    min-height: 500px;
   }
 
   .about-art {
@@ -1362,9 +1488,19 @@ blockquote {
     min-height: 430px;
   }
 
-  .monogram-card {
+  .hero-photo-card {
     width: 330px;
-    padding: 38px 34px 28px;
+  }
+
+  .hero-photo-signature {
+    inset-inline: 15px;
+    bottom: 15px;
+    padding: 10px 12px;
+  }
+
+  .signature-mark {
+    width: 50px;
+    height: 50px;
   }
 
   .orbit-one {
@@ -1390,6 +1526,18 @@ blockquote {
 
   .service-card h3 {
     margin-top: 48px;
+  }
+
+  .people {
+    padding-top: 12px;
+  }
+
+  .people-card {
+    min-height: 430px;
+  }
+
+  .people-card-copy {
+    padding: 28px 24px;
   }
 
   .about-art {
