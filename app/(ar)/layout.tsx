@@ -1,25 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, Manrope, Noto_Sans_Arabic } from "next/font/google";
-import "./globals.css";
-
-const arabic = Noto_Sans_Arabic({
-  subsets: ["arabic"],
-  variable: "--font-arabic",
-  display: "swap",
-});
-
-const manrope = Manrope({
-  subsets: ["latin"],
-  variable: "--font-sans",
-  display: "swap",
-});
-
-const editorial = Cormorant_Garamond({
-  subsets: ["latin"],
-  variable: "--font-editorial",
-  weight: ["400", "500", "600", "700"],
-  display: "swap",
-});
+import { fontVariables } from "@/app/_fonts";
+import "../globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://dr-ammar.com"),
@@ -66,9 +47,9 @@ export const viewport: Viewport = {
   themeColor: "#F7F4EE",
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function ArabicRootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="ar" dir="rtl" className={`${arabic.variable} ${manrope.variable} ${editorial.variable}`}>
+    <html lang="ar" dir="rtl" className={fontVariables}>
       <body>{children}</body>
     </html>
   );
