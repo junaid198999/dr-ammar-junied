@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { content, siteInfo, type Locale } from "@/lib/site-data";
+import { getLanguage, languages, localePath } from "@/lib/i18n";
 import {
   ArrowIcon,
   ChevronIcon,
@@ -14,21 +15,21 @@ import {
 
 export function SitePage({ locale }: { locale: Locale }) {
   const copy = content[locale];
-  const isArabic = locale === "ar";
-  const homeHref = isArabic ? "/" : "/en";
-  const whatsappMessage = isArabic
-    ? "مرحبًا، أرغب في حجز موعد تقييم تقويم أسنان مع د. عمار جنيد."
-    : "Hello, I would like to book an orthodontic assessment with Dr. Ammar Junied.";
+  const currentLanguage = getLanguage(locale);
+  const homeHref = localePath(locale);
+  const whatsappMessage = copy.bookingMessage;
   const whatsappHref = `https://wa.me/${siteInfo.directPhone.replace("+", "")}?text=${encodeURIComponent(whatsappMessage)}`;
+  const pageUrl = `https://dr-ammar.com${homeHref === "/" ? "" : homeHref}`;
   const schema = {
     "@context": "https://schema.org",
     "@type": "Dentist",
     name: siteInfo.name,
     alternateName: siteInfo.arabicName,
-    description: isArabic ? siteInfo.specialtyAr : siteInfo.specialtyEn,
-    url: isArabic ? "https://dr-ammar.com" : "https://dr-ammar.com/en",
+    description: copy.hero.description,
+    url: pageUrl,
     telephone: siteInfo.directPhone,
     medicalSpecialty: "Orthodontics",
+    inLanguage: currentLanguage.htmlLang,
     address: {
       "@type": "PostalAddress",
       streetAddress: "7176 King Abdullah Branch Road, Al Khalidiyyah",
@@ -42,7 +43,7 @@ export function SitePage({ locale }: { locale: Locale }) {
   return (
     <div className="site-shell" lang={copy.lang} dir={copy.dir}>
       <a className="skip-link" href="#main-content">
-        {isArabic ? "انتقل إلى المحتوى" : "Skip to content"}
+        {copy.skipToContent}
       </a>
 
       <header className="site-header">
@@ -57,7 +58,7 @@ export function SitePage({ locale }: { locale: Locale }) {
             />
           </Link>
 
-          <nav className="main-nav" aria-label={isArabic ? "التنقل الرئيسي" : "Main navigation"}>
+          <nav className="main-nav" aria-label={copy.mainNavigation}>
             {copy.nav.map((item) => (
               <a key={item.href} href={item.href}>
                 {item.label}
@@ -66,9 +67,32 @@ export function SitePage({ locale }: { locale: Locale }) {
           </nav>
 
           <div className="header-actions">
-            <Link className="language-link" href={copy.languageHref} hrefLang={locale === "ar" ? "en" : "ar"}>
-              {copy.languageLabel}
-            </Link>
+            <details className="language-menu">
+              <summary aria-label={`${copy.languageMenu}: ${currentLanguage.nativeName}`}>
+                <span className="language-symbol" aria-hidden="true">文</span>
+                <span>{currentLanguage.nativeName}</span>
+                <ChevronIcon />
+              </summary>
+              <div className="language-popover">
+                <p>{copy.chooseLanguage}</p>
+                <div className="language-grid">
+                  {languages.map((language) => (
+                    <Link
+                      key={language.code}
+                      className={language.code === locale ? "is-current" : undefined}
+                      href={localePath(language.code)}
+                      hrefLang={language.htmlLang}
+                      lang={language.htmlLang}
+                      dir={language.dir}
+                      aria-current={language.code === locale ? "page" : undefined}
+                    >
+                      <span>{language.nativeName}</span>
+                      <small>{language.englishName}</small>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </details>
             <a className="button button-small button-dark" href={whatsappHref} target="_blank" rel="noreferrer">
               {copy.book}
               <ArrowIcon />
@@ -97,7 +121,7 @@ export function SitePage({ locale }: { locale: Locale }) {
                   <ArrowIcon />
                 </a>
               </div>
-              <ul className="trust-list" aria-label={isArabic ? "خبرات الطبيب" : "Doctor highlights"}>
+              <ul className="trust-list" aria-label={copy.doctorHighlights}>
                 {copy.hero.trust.map((item) => (
                   <li key={item}><span />{item}</li>
                 ))}
@@ -382,7 +406,7 @@ export function SitePage({ locale }: { locale: Locale }) {
           </div>
           <div className="footer-links">
             {copy.nav.map((item) => <a key={item.href} href={item.href}>{item.label}</a>)}
-            <a href={siteInfo.doctorProfile} target="_blank" rel="noreferrer">{isArabic ? "صفحة الطبيب الرسمية" : "Official doctor profile"}</a>
+            <a href={siteInfo.doctorProfile} target="_blank" rel="noreferrer">{copy.officialProfile}</a>
           </div>
         </div>
         <div className="container footer-bottom">

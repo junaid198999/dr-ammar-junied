@@ -1,4 +1,7 @@
-export type Locale = "ar" | "en";
+import generatedTranslations from "@/lib/translations.generated.json";
+import type { Locale } from "@/lib/i18n";
+
+export type { Locale } from "@/lib/i18n";
 
 export const siteInfo = {
   name: "Dr. Ammar Junied",
@@ -21,12 +24,19 @@ export const siteInfo = {
     "https://www.google.com/maps/search/?api=1&query=%D9%85%D8%AC%D9%85%D8%B9+%D8%A2%D8%B1%D8%A7%D9%83+%D8%B7%D8%A7%D8%A8%D8%A7+%D8%A7%D9%84%D8%B7%D8%A8%D9%8A+%D8%A7%D9%84%D9%85%D8%AF%D9%8A%D9%86%D8%A9+%D8%A7%D9%84%D9%85%D9%86%D9%88%D8%B1%D8%A9",
 } as const;
 
-export const content = {
+export const baseContent = {
   ar: {
     lang: "ar",
     dir: "rtl",
     languageLabel: "EN",
     languageHref: "/en",
+    skipToContent: "انتقل إلى المحتوى",
+    mainNavigation: "التنقل الرئيسي",
+    doctorHighlights: "خبرات الطبيب",
+    officialProfile: "صفحة الطبيب الرسمية",
+    languageMenu: "اللغة",
+    chooseLanguage: "اختر لغتك",
+    bookingMessage: "مرحبًا، أرغب في حجز موعد تقييم تقويم أسنان مع د. عمار جنيد.",
     nav: [
       { label: "التخصص", href: "#expertise" },
       { label: "العروض", href: "#offers" },
@@ -250,6 +260,14 @@ export const content = {
     dir: "ltr",
     languageLabel: "عربي",
     languageHref: "/",
+    skipToContent: "Skip to content",
+    mainNavigation: "Main navigation",
+    doctorHighlights: "Doctor highlights",
+    officialProfile: "Official doctor profile",
+    languageMenu: "Language",
+    chooseLanguage: "Choose your language",
+    bookingMessage:
+      "Hello, I would like to book an orthodontic assessment with Dr. Ammar Junied.",
     nav: [
       { label: "Expertise", href: "#expertise" },
       { label: "Offers", href: "#offers" },
@@ -468,4 +486,13 @@ export const content = {
     medicalNote:
       "This website introduces the service and does not replace an in-person medical examination or diagnosis.",
   },
-} as const;
+};
+
+export type SiteContent = typeof baseContent.en;
+type GeneratedLocale = Exclude<Locale, "ar" | "en">;
+
+export const content: Record<Locale, SiteContent> = {
+  ar: baseContent.ar,
+  en: baseContent.en,
+  ...(generatedTranslations as Record<GeneratedLocale, SiteContent>),
+};

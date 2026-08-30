@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { fontVariables } from "@/app/_fonts";
+import { languageAlternates, languages } from "@/lib/i18n";
 import "../globals.css";
 
 export const metadata: Metadata = {
@@ -22,12 +23,12 @@ export const metadata: Metadata = {
   creator: "Dr. Ammar Junied",
   alternates: {
     canonical: "/",
-    languages: { "ar-SA": "/", en: "/en" },
+    languages: languageAlternates,
   },
   openGraph: {
     type: "website",
     locale: "ar_SA",
-    alternateLocale: "en_US",
+    alternateLocale: languages.filter((language) => language.code !== "ar").map((language) => language.ogLocale),
     url: "/",
     siteName: "Dr. Ammar Junied",
     title: "د. عمار جنيد | أخصائي تقويم الأسنان",
