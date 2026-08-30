@@ -125,6 +125,16 @@ blockquote {
   height: auto;
 }
 
+.site-shell[dir="rtl"] .brand {
+  display: flex;
+  justify-content: flex-start;
+  text-align: right;
+}
+
+.site-shell[dir="rtl"] .brand img {
+  object-position: right center;
+}
+
 .main-nav {
   display: flex;
   align-items: center;
@@ -713,6 +723,178 @@ blockquote {
   line-height: 1.7;
 }
 
+.offers {
+  position: relative;
+  background:
+    radial-gradient(circle at 8% 12%, rgba(185, 154, 82, 0.14), transparent 24%),
+    linear-gradient(180deg, #edf2f0, var(--ivory));
+  overflow: hidden;
+}
+
+.offers::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.2;
+  background-image:
+    linear-gradient(rgba(16, 34, 47, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(16, 34, 47, 0.07) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: linear-gradient(to bottom, black, transparent 82%);
+  pointer-events: none;
+}
+
+.offers .container {
+  position: relative;
+  z-index: 1;
+}
+
+.offers-grid {
+  margin-top: 64px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.offer-card {
+  min-width: 0;
+  border: 1px solid rgba(16, 34, 47, 0.1);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--paper);
+  box-shadow: 0 18px 48px rgba(16, 34, 47, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.offer-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 26px 58px rgba(16, 34, 47, 0.13);
+}
+
+.offer-card-featured {
+  border-color: rgba(185, 154, 82, 0.55);
+  box-shadow: 0 22px 60px rgba(116, 88, 27, 0.15);
+}
+
+.offer-media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #dfe8e5;
+}
+
+.offer-media::after {
+  content: "";
+  position: absolute;
+  inset: 56% 0 0;
+  background: linear-gradient(to bottom, transparent, rgba(16, 34, 47, 0.24));
+  pointer-events: none;
+}
+
+.offer-media > img {
+  object-fit: cover;
+  transition: transform 0.65s ease;
+}
+
+.offer-card:hover .offer-media > img {
+  transform: scale(1.035);
+}
+
+.offer-badge {
+  position: absolute;
+  z-index: 2;
+  inset-inline-start: 18px;
+  top: 18px;
+  padding: 9px 13px;
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  border-radius: 999px;
+  background: rgba(16, 34, 47, 0.82);
+  color: white;
+  backdrop-filter: blur(12px);
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.offer-card-featured .offer-badge {
+  border-color: rgba(255, 255, 255, 0.55);
+  background: var(--gold);
+  color: var(--ink);
+}
+
+.offer-copy {
+  padding: 30px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.offer-kicker {
+  color: var(--gold-text);
+  font-size: 0.74rem;
+  font-weight: 850;
+}
+
+.offer-copy h3 {
+  margin: 12px 0 14px;
+  font-size: clamp(1.35rem, 2vw, 1.85rem);
+  line-height: 1.45;
+}
+
+.offer-copy > p {
+  margin: 0;
+  color: #5e6f77;
+  font-size: 0.88rem;
+  line-height: 1.85;
+}
+
+.offer-actions {
+  margin-top: auto;
+  padding-top: 28px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.offer-actions .button {
+  min-height: 48px;
+  padding-inline: 18px;
+  font-size: 0.78rem;
+}
+
+.offer-source {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ink-soft);
+  font-size: 0.76rem;
+  font-weight: 800;
+}
+
+.offer-source:hover {
+  color: var(--gold-text);
+}
+
+.offer-source svg {
+  width: 16px;
+  height: 16px;
+}
+
+.site-shell[dir="rtl"] .offer-source svg {
+  transform: scaleX(-1);
+}
+
+.offers-disclaimer {
+  max-width: 920px;
+  margin: 22px auto 0;
+  color: #6f7e84;
+  text-align: center;
+  font-size: 0.74rem;
+  line-height: 1.8;
+}
+
 .about {
   padding-bottom: 0;
   background: var(--ink);
@@ -1214,6 +1396,19 @@ blockquote {
   height: auto;
 }
 
+.footer-brand {
+  min-width: 0;
+}
+
+.site-shell[dir="rtl"] .footer-brand {
+  text-align: right;
+}
+
+.site-shell[dir="rtl"] .footer-brand img {
+  margin-inline-end: 0;
+  object-position: right center;
+}
+
 .footer-grid p {
   margin: 8px 0 0;
   color: #738087;
@@ -1321,6 +1516,10 @@ blockquote {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .offers-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .about-grid,
   .location-grid,
   .faq-grid,
@@ -1414,6 +1613,10 @@ blockquote {
   }
 
   .people-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .offers-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1538,6 +1741,14 @@ blockquote {
 
   .people-card-copy {
     padding: 28px 24px;
+  }
+
+  .offer-copy {
+    padding: 26px 22px;
+  }
+
+  .offer-actions .button {
+    width: 100%;
   }
 
   .about-art {

@@ -52,7 +52,7 @@ export function SitePage({ locale }: { locale: Locale }) {
               src="/brand/logo.svg"
               alt="Dr. Ammar Junied — Orthodontist"
               width={260}
-              height={97}
+              height={125}
               priority
             />
           </Link>
@@ -182,6 +182,54 @@ export function SitePage({ locale }: { locale: Locale }) {
               ))}
             </div>
             <p className="people-disclaimer">{copy.care.disclaimer}</p>
+          </div>
+        </section>
+
+        <section className="section offers" id="offers">
+          <div className="container">
+            <div className="section-heading split-heading">
+              <div>
+                <p className="eyebrow"><span />{copy.offers.eyebrow}</p>
+                <h2>{copy.offers.title}</h2>
+              </div>
+              <p>{copy.offers.description}</p>
+            </div>
+
+            <div className="offers-grid">
+              {copy.offers.items.map((offer) => {
+                const offerHref = `https://wa.me/${siteInfo.directPhone.replace("+", "")}?text=${encodeURIComponent(offer.message)}`;
+
+                return (
+                  <article className={`offer-card${offer.featured ? " offer-card-featured" : ""}`} key={offer.title}>
+                    <div className="offer-media">
+                      <Image
+                        src={offer.image}
+                        alt={offer.alt}
+                        fill
+                        sizes="(max-width: 860px) 100vw, (max-width: 1100px) 50vw, 33vw"
+                      />
+                      <span className="offer-badge">{offer.badge}</span>
+                    </div>
+                    <div className="offer-copy">
+                      <span className="offer-kicker">{offer.kicker}</span>
+                      <h3>{offer.title}</h3>
+                      <p>{offer.text}</p>
+                      <div className="offer-actions">
+                        <a className="button button-dark" href={offerHref} target="_blank" rel="noreferrer">
+                          <MessageIcon />
+                          {copy.offers.cta}
+                        </a>
+                        <a className="offer-source" href={offer.source} target="_blank" rel="noreferrer">
+                          {copy.offers.sourceLabel}
+                          <ArrowIcon />
+                        </a>
+                      </div>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+            <p className="offers-disclaimer">{copy.offers.disclaimer}</p>
           </div>
         </section>
 
@@ -328,8 +376,8 @@ export function SitePage({ locale }: { locale: Locale }) {
 
       <footer className="site-footer">
         <div className="container footer-grid">
-          <div>
-            <Image src="/brand/logo.svg" alt="Dr. Ammar Junied" width={220} height={82} />
+          <div className="footer-brand">
+            <Image src="/brand/logo.svg" alt="Dr. Ammar Junied" width={220} height={105} />
             <p>{copy.footerTagline}</p>
           </div>
           <div className="footer-links">
