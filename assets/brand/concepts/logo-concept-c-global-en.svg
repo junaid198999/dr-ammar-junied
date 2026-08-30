@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 520" role="img" aria-labelledby="title desc">
+  <title id="title">Dr. Ammar Junied — Orthodontist</title>
+  <desc id="desc">A premium AJ monogram with a subtle orthodontic arch and an English wordmark.</desc>
+
+  <g id="aj-monogram" transform="translate(38 28)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M82 394 225 62 368 394" stroke="#10222F" stroke-width="28"/>
+    <path d="M354 74h86v205c0 78-45 123-122 123-40 0-73-12-98-36" stroke="#10222F" stroke-width="28"/>
+    <path d="M72 285c91-81 253-81 382 0" stroke="#B99A52" stroke-width="12"/>
+    <rect x="256" y="241" width="34" height="34" rx="7" fill="#B99A52" stroke="none"/>
+  </g>
+
+  <g id="wordmark" fill="#10222F">
+    <text x="555" y="172" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="600" letter-spacing="9">DR. AMMAR</text>
+    <text x="548" y="294" font-family="Georgia, 'Times New Roman', serif" font-size="112" font-weight="500" letter-spacing="6">JUNIED</text>
+    <path d="M555 330h665" stroke="#B99A52" stroke-width="4"/>
+    <text x="558" y="397" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="500" letter-spacing="14">ORTHODONTIST</text>
+  </g>
+</svg>

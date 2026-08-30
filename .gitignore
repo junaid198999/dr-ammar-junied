@@ -1,0 +1,32 @@
+# dependencies
+/node_modules
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# local files
+.DS_Store
+*.pem
+.env*
+!.env.example
+
+# rejected logo explorations (kept locally only)
+/assets/brand/concepts/logo-concept-a-thuluth-seal.png
+/assets/brand/concepts/logo-concept-b-monogram.png
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
